@@ -1,0 +1,37 @@
+{
+  "name": "willcore.core",
+  "version": "1.0.0",
+  "description": "Core proxy/assignable modules",
+  "main": "proxies/willCore/willCoreProxy.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^4.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^7.0.1"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhilipCoder/willCore.core.git"
+  },
+  "keywords": [
+    "Proxies",
+    "Assignables"
+  ],
+  "author": "Philip Schoeman",
+  "license": "LGPL-2.1-only",
+  "bugs": {
+    "url": "https://github.com/PhilipCoder/willCore.core/issues"
+  },
+  "homepage": "https://github.com/PhilipCoder/willCore.core#readme",
+  "files":[
+    "/assignable",
+    "/moduleContainer",
+    "/proxies"
+  ]
+}
