@@ -1,6 +1,10 @@
 const willCoreModules = require("../proxies/moduleContainment/moduleProxyHandler.js");
 
-const willCoreModuleInstance = willCoreModules.new();
+let willCoreModuleInstance = willCoreModules.new();
 willCoreModuleInstance.assignables = willCoreModules.new();
+
+willCoreModuleInstance._reset = ()=>{
+    willCoreModuleInstance.assignables = willCoreModules.new();
+};
 
 module.exports = willCoreModuleInstance;

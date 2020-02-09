@@ -1,36 +1,12 @@
 const assert = require('chai').assert;
 const willCoreProxyHandler = require("../proxies/willCore/willCoreProxyHandler.js");
 const willCoreProxy = require("../proxies/willCore/willCoreProxy.js");
-const assignable = require("../assignable/assignable.js");
 const intermediateAssignableProxy = require("../proxies/intermediateAssignable/intermediateAssignableProxy.js");
 const willCoreModules = require("../moduleContainer/willCoreModules.js");
+const testAssingable = require("./mocks/testAssignable.js");
+const testAssingableObj = require("./mocks/testAssignableObj.js");
 
-class testAssingable extends assignable {
-    constructor() {
-        super({ string: 3 }, willCoreProxy);
-        this.isCompletedAssignment = false;
-        this.result = undefined;
-    }
-    completionResult() {
-        return this.result;
-    }
-    completed() {
-        this.isCompletedAssignment = true;
-    }
-}
-
-class testAssingableObj extends assignable {
-    constructor() {
-        super({ string: 3, object: 1 }, willCoreProxy);
-    }
-    completionResult() {
-        return this.bindedValues;
-    }
-    completed() {
-    }
-}
-
-describe('mysql-willCoreProxyHandler-test', function () {
+describe('willCoreProxyHandler-test', function () {
     willCoreModules.assignables.testAssingableObj = () => testAssingableObj;
     willCoreModules.assignables.testAssingable = () => testAssingable;
     it('exception-invalid-assignment', function () {

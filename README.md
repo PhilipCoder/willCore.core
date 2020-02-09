@@ -52,3 +52,4 @@ When the class is assigned to $elementId, the framework checks if the class inhe
 
 <br/>
 
+### Adding additional assignables
