@@ -21,7 +21,6 @@ class intermediateAssignableProxyHandler extends baseProxyHandler {
 
     setValue(target, property, value, proxy) {
         this.parentProxy[this.parentProperty] = willCoreModules.assignables[property] ? willCoreModules.assignables[property] : property;
-        this.parentProxy[this.parentProperty] = typeof value === "string" && willCoreModules.assignables[property] ? willCoreModules.assignables[property] : value;
         return { value: intermediateProxy.new(this.parentProxy, this.parentProperty), status: true };
     }
 }
