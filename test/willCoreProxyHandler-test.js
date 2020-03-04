@@ -5,10 +5,13 @@ const intermediateAssignableProxy = require("../proxies/intermediateAssignable/i
 const willCoreModules = require("../moduleContainer/willCoreModules.js");
 const testAssingable = require("./mocks/testAssignable.js");
 const testAssingableObj = require("./mocks/testAssignableObj.js");
+const testAssignableNoValue = require('./mocks/testAssignableNoValue.js');
 
 describe('willCoreProxyHandler-test', function () {
     willCoreModules.assignables.testAssingableObj = () => testAssingableObj;
     willCoreModules.assignables.testAssingable = () => testAssingable;
+    willCoreModules.assignables.noValue = () => testAssignableNoValue;
+
     it('exception-invalid-assignment', function () {
         let proxyHandler = new willCoreProxyHandler();
         let proxy = new Proxy({}, proxyHandler);
@@ -94,6 +97,12 @@ describe('willCoreProxyHandler-test', function () {
         assert(proxy.myDB["string"][0] === "one" && proxy.myDB["string"][1] === "two" && proxy.myDB["string"][2] === "three", "Assigned values are incorrect");
         assert(proxy.myDB["object"].length === 1, "Assigned values are incorrect");
         assert(proxy.myDB["object"][0].testing === 20, "Assigned values are incorrect");
+    });
+    it('willCore-assignment-no-values', function () {
+        let proxy = willCoreProxy.new();
+        proxy.noValue;
+        assert(typeof proxy.noValue === "string", "The assignable is not a string.");
+        assert(proxy.noValue === "ProxyValueHere", "Assigned values are incorrect");
     });
     it('willCore-assignment-property-assign-direct', function () {
         let proxy = willCoreProxy.new();

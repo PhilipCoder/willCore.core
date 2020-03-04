@@ -2,11 +2,12 @@ const baseProxyHandler = require("./baseProxyHandler.js");
 const assignable = require("../../assignable/assignable.js");
 const intermediateAssignableProxy = require("../intermediateAssignable/intermediateAssignableProxy.js");
 const baseProxy = require("./baseProxy.js");
+const willCoreModules = require("../../moduleContainer/willCoreModules.js");
 
 class assignableProxyHandler extends baseProxyHandler {
     constructor() {
         super();
-        this.getTraps = [this.getCopy,this.getStraightValue, this.getAssignable];
+        this.getTraps = [this.getCopy, this.getStraightValue, this.getAssignable];
         this.setTraps = [this.assignStraightValue, this.assignArray, this.assignAssignable, this.assignAssignableValue, this.assignCompleted];
         this.hiddenVariables = {};
     }
@@ -86,9 +87,20 @@ class assignableProxyHandler extends baseProxyHandler {
         if (target[property]) {
             return { value: target[property], status: true };
         }
+        else if (willCoreModules.assignables["&" + property] && willCoreModules.assignables[property].noValues && this.canAssign(proxy, willCoreModules.assignables[property])) {
+            proxy[property] = willCoreModules.assignables[property];
+            return { value: target[property], status: true };
+        }
         else {
             return { value: intermediateAssignableProxy.new(proxy, property), status: true };
         }
+    }
+
+    canAssign(currentProxy, assignable) {
+        if ((Array.isArray(assignable.noValues) && assignable.noValues.filter(type => parentProxy instanceof currentProxy).length > 0) || currentProxy instanceof assignable.noValues) {
+            return true;
+        }
+        return false;
     }
 
     getCopy(target, property, value, proxy) {
