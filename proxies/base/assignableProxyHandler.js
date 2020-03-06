@@ -97,10 +97,7 @@ class assignableProxyHandler extends baseProxyHandler {
     }
 
     canAssign(currentProxy, assignable) {
-        if ((Array.isArray(assignable.noValues) && assignable.noValues.filter(type => parentProxy instanceof currentProxy).length > 0) || currentProxy instanceof assignable.noValues) {
-            return true;
-        }
-        return false;
+        return (Array.isArray(assignable.noValues) && assignable.noValues.filter(type => parentProxy instanceof currentProxy).length > 0) || currentProxy instanceof assignable.noValues;
     }
 
     getCopy(target, property, value, proxy) {

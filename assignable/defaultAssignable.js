@@ -6,6 +6,10 @@ class defaultAssignable extends assignable {
         super({}, baseProxy);
     }
 
+    static get noValues(){
+        return baseProxy;
+    }
+
     completionResult() {
         let proxyResult = defaultProxy.new(this, this.propertyName);
         return proxyResult;
