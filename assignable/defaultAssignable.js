@@ -3,7 +3,7 @@ const baseProxy = require("../proxies/base/baseProxy.js");
 const defaultProxy = require("../proxies/default/defaultProxy.js");
 class defaultAssignable extends assignable {
     constructor() {
-        super({}, baseProxy);
+        super({}, baseProxy); 
     }
 
     static get noValues(){
