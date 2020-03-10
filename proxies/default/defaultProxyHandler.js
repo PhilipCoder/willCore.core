@@ -2,8 +2,8 @@ const assignableProxyHandler = require("../base/assignableProxyHandler.js");
 const baseProxy = require("../base/baseProxy.js");
 
 class defaultProxyHandler extends assignableProxyHandler {
-    constructor(parentProxy, parentProperty) {
-        super();
+    constructor(parentProxy,parentProperty,assignable) {
+        super(assignable);
         this.getTraps.unshift(this.getProxies);
         this.proxies = {};
     }

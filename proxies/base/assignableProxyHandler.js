@@ -5,11 +5,12 @@ const baseProxy = require("./baseProxy.js");
 const willCoreModules = require("../../moduleContainer/willCoreModules.js");
 
 class assignableProxyHandler extends baseProxyHandler {
-    constructor() {
+    constructor(assignableInstance) {
         super();
         this.getTraps = [this.getCopy, this.getStraightValue, this.getAssignable];
         this.setTraps = [this.assignStraightValue, this.assignArray, this.assignAssignable, this.assignAssignableValue, this.assignCompleted];
         this.hiddenVariables = {};
+        this.hiddenVariables["_assignable"] = assignableInstance;
     }
 
 

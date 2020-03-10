@@ -20,7 +20,6 @@ describe('test-default-proxy-test', function () {
         proxy.defaultValues.someDefaultValue.testProxy = "Hello world";
         assert(proxy.defaultValues.someDefaultValue instanceof testProxy, "An testProxy was not returned.");
         assert(Object.keys(proxy.defaultValues.proxies).length ===1 , "There should only be one key.");
-
     });
 })
 

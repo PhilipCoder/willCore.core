@@ -1,8 +1,8 @@
 const assignableProxyHandler = require("../../Proxies/base/assignableProxyHandler.js");
 
 class testAssignableProxyHandler extends assignableProxyHandler {
-    constructor(parentProxy, parentProperty) {
-        super();
+    constructor(parentProxy, parentProperty, assignable) {
+        super(assignable);
     }
 }
 

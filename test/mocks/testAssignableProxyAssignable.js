@@ -9,7 +9,7 @@ class testAssignable extends assignable {
     }
 
     completionResult() {
-        return testAssignableProxy.new();
+        return testAssignableProxy.new(null, null, this);
     }
 
     completed() {

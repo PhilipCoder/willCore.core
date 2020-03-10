@@ -11,7 +11,7 @@ class defaultAssignable extends assignable {
     }
 
     completionResult() {
-        let proxyResult = defaultProxy.new(this, this.propertyName);
+        let proxyResult = defaultProxy.new(this, this.propertyName,this);
         return proxyResult;
     }
 
