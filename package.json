@@ -1,6 +1,6 @@
 {
   "name": "willcore.core",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Core proxy/assignable modules",
   "main": "proxies/willCore/willCoreProxy.js",
   "directories": {
